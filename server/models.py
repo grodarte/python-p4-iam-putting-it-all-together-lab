@@ -52,7 +52,7 @@ class Recipe(db.Model, SerializerMixin):
 
     @validates('instructions')
     def validate_instructions(self, key, instructions):
-        if len(instructions) <= 50 or not instructions:
+        if len(instructions) < 50 or not instructions:
             raise ValueError("Recipe instructions must be at least 50 characters")
 
         return instructions
